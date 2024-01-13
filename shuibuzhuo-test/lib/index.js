@@ -1,31 +1,40 @@
 #!/usr/bin/env node
-const lib = require("shuibuzhuo-test-lib");
 
-const argv = require("process").argv;
+const yargs = require("yargs/yargs");
+const { hideBin } = require("yargs/helpers");
+const dedent = require("dedent");
 
-const command = argv[2];
+const arg = hideBin(process.argv);
 
-const options = argv.slice(3);
+const cli = yargs(arg);
 
-if (options.length > 1) {
-  let [option, param] = options;
+cli
+  .usage("Usage: shuibuzhuo-test [command] <options>")
+  .demandCommand(
+    1,
+    "A command is required. Pass --help to see all available commands and options."
+  )
+  .strict()
+  .alias("h", "help")
+  .alias("v", "version")
+  .wrap(cli.terminalWidth())
+  .epilogue(
+    dedent`
+  When a command fails, all logs are written to lerna-debug.log in the current working directory.
 
-  option = option.replace("--", "");
-
-  if (command) {
-    if (lib[command]) {
-      lib[command]({ option, param });
-    } else {
-      console.log("无效的命令");
-    }
-  } else {
-    console.log("请输入命令");
-  }
-}
-
-if (command.startsWith("--" || command.startsWith("-"))) {
-  const globalOption = command.replace(/--|-/g, "");
-  if (globalOption === "version" || globalOption === "V") {
-    console.log("1.0.0");
-  }
-}
+  For more information, check out the docs at https://lerna.js.org/docs/introduction
+`
+  )
+  .options({
+    debug: {
+      type: "boolean",
+      describe: "Bootstrap debug mode",
+      alias: "d",
+    },
+  })
+  .option("registry", {
+    type: "string",
+    describe: "Define global registry",
+  })
+  .group(["debug"], "Dev Options:")
+  .group(["registry"], "Extra Options:").argv;
