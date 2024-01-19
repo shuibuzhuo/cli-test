@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^11.1.0",
+    "commander": "^6.2.1",
     "dedent": "^1.5.1",
     "shuibuzhuo-test-lib": "^1.1.0",
     "yargs": "^17.7.2"
