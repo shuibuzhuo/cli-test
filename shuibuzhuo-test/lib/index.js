@@ -41,4 +41,19 @@ service
   
 program.addCommand(service)
 
+program
+  .command('install [name]', 'install package', {
+    executableFile: 'shuibuzhuo-cli-dev'
+  })
+
+program
+  .arguments('<cmd> [options]')
+  .description('test command', {
+    cmd: 'command to run',
+    options: 'options for command'
+  })
+  .action((cmd, options) => {
+    console.log(cmd, options);
+  })
+
 program.parse(process.argv);
