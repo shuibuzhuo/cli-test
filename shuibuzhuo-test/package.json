@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "shuibuzhuo-test": "lib/index.js"
+    "shuibuzhuo-test": "bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "dev": "webpack -w"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,9 @@
     "dedent": "^1.5.1",
     "shuibuzhuo-test-lib": "^1.1.0",
     "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.10.3",
+    "webpack-cli": "^4.2.0"
   }
 }
