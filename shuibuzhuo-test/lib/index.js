@@ -41,19 +41,47 @@ service
   
 program.addCommand(service)
 
-program
-  .command('install [name]', 'install package', {
-    executableFile: 'shuibuzhuo-cli-dev'
-  })
+// program
+//   .command('install [name]', 'install package', {
+//     executableFile: 'shuibuzhuo-cli-dev',
+//     isDefault: true,
+//     // hidden: true
+//   }).alias('i')
 
-program
-  .arguments('<cmd> [options]')
-  .description('test command', {
-    cmd: 'command to run',
-    options: 'options for command'
-  })
-  .action((cmd, options) => {
-    console.log(cmd, options);
-  })
+// program
+//   .arguments('<cmd> [options]')
+//   .description('test command', {
+//     cmd: 'command to run',
+//     options: 'options for command'
+//   })
+//   .action((cmd, options) => {
+//     console.log(cmd, options);
+//   })
+
+// 1. 自定义 help 信息
+// program.helpInformation = function() { 
+//   return 'help information'
+// }
+
+// program.on('--help', function() {
+//   console.log('help information');
+// })
+
+// 2. 实现 debug 模式
+program.on('option:debug', function() {
+  if (program.debug) {
+    process.env.LOG_LEVEL = 'verbose'
+  }
+
+  console.log(process.env.LOG_LEVEL);
+})
+
+// 3. 对未知命令监听
+program.on('command:*', function(obj) {
+  console.log('未知的命令：', obj[0]);
+  const availableCommands = program.commands.map(cmd => cmd.name())
+  console.log(availableCommands);
+  console.log('可用命令：' + availableCommands.join(', '));
+})
 
 program.parse(process.argv);
