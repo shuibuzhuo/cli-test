@@ -7,6 +7,7 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./bin/core.js":
@@ -15,8 +16,7 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ \"./bin/utils.js\");\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_utils__WEBPACK_IMPORTED_MODULE_0__);\n\n\n_utils__WEBPACK_IMPORTED_MODULE_0___default()()\n\n\n//# sourceURL=webpack://shuibuzhuo-test/./bin/core.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! path */ \"path\");\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ \"./bin/utils.js\");\n\n\n\nconsole.log(path__WEBPACK_IMPORTED_MODULE_0___default().resolve('.'));\nconsole.log((0,_utils__WEBPACK_IMPORTED_MODULE_1__.exists)(path__WEBPACK_IMPORTED_MODULE_0___default().resolve('.')));\n\n(async() => {\n  const res = await new Promise(resolve => setTimeout(() => resolve('haha'), 1000))\n  console.log('res ok', res);\n})()\n\n\n//# sourceURL=webpack://shuibuzhuo-test/./bin/core.js?");
 
 /***/ }),
 
@@ -24,9 +24,49 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
 /*!**********************!*\
   !*** ./bin/utils.js ***!
   \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"exists\": () => /* binding */ exists\n/* harmony export */ });\n/* harmony import */ var path_exists__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! path-exists */ \"./node_modules/path-exists/index.js\");\n/* harmony import */ var path_exists__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(path_exists__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction exists(p) {\n  return path_exists__WEBPACK_IMPORTED_MODULE_0___default().sync(p)\n}\n\n\n//# sourceURL=webpack://shuibuzhuo-test/./bin/utils.js?");
+
+/***/ }),
+
+/***/ "./node_modules/path-exists/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/path-exists/index.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("\nconst fs = __webpack_require__(/*! fs */ \"fs\");\nconst {promisify} = __webpack_require__(/*! util */ \"util\");\n\nconst pAccess = promisify(fs.access);\n\nmodule.exports = async path => {\n\ttry {\n\t\tawait pAccess(path);\n\t\treturn true;\n\t} catch (_) {\n\t\treturn false;\n\t}\n};\n\nmodule.exports.sync = path => {\n\ttry {\n\t\tfs.accessSync(path);\n\t\treturn true;\n\t} catch (_) {\n\t\treturn false;\n\t}\n};\n\n\n//# sourceURL=webpack://shuibuzhuo-test/./node_modules/path-exists/index.js?");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
 /***/ ((module) => {
 
-eval("module.exports = function() {\n  console.log('hello utils');\n}\n\n\n//# sourceURL=webpack://shuibuzhuo-test/./bin/utils.js?");
+eval("module.exports = require(\"fs\");;\n\n//# sourceURL=webpack://shuibuzhuo-test/external_%22fs%22?");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/***/ ((module) => {
+
+eval("module.exports = require(\"path\");;\n\n//# sourceURL=webpack://shuibuzhuo-test/external_%22path%22?");
+
+/***/ }),
+
+/***/ "util":
+/*!***********************!*\
+  !*** external "util" ***!
+  \***********************/
+/***/ ((module) => {
+
+eval("module.exports = require(\"util\");;\n\n//# sourceURL=webpack://shuibuzhuo-test/external_%22util%22?");
 
 /***/ })
 
