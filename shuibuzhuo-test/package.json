@@ -16,10 +16,14 @@
   "dependencies": {
     "commander": "^6.2.1",
     "dedent": "^1.5.1",
+    "path-exists": "^4.0.0",
     "shuibuzhuo-test-lib": "^1.1.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
     "webpack": "^5.10.3",
     "webpack-cli": "^4.2.0"
   }
