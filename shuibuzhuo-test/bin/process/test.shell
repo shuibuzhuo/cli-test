@@ -1,5 +1,7 @@
 #!/bin/bash
 
-ls -al|grep node_modules
+# ls -al|grep node_modules
 
-echo $1
+# echo $1
+
+echo hello
