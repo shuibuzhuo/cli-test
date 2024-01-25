@@ -32,3 +32,10 @@ const path = require('path')
 //   console.log(stdout);
 //   console.log(stderr);
 // })
+
+const child = cp.fork(path.resolve(__dirname, 'child.js'))
+child.send('hello from main')
+child.on('message', (msg) => {
+  console.log('main receive message', msg);
+})
+console.log('main pid: ', process.pid);
