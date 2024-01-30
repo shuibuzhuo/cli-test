@@ -7,11 +7,11 @@ const path = require('path')
 //   console.log(stderr);
 // })
 
-// cp.execFile(path.resolve(__dirname, 'test.shell'), function(err, stdout, stderr) {
-//   console.log(err);
-//   // console.log(stdout);
-//   // console.log(stderr);
-// })
+cp.execFile('cmd', ['/c', path.resolve(__dirname, 'test.shell')], function(err, stdout, stderr) {
+  console.log(err);
+  console.log(stdout);
+  console.log(stderr);
+})
 
 // const child = cp.spawn('npm.cmd', ['install'], {
 //   cwd: path.resolve('E:/vue/cli-test/shuibuzhuo-test-lib')
@@ -33,9 +33,9 @@ const path = require('path')
 //   console.log(stderr);
 // })
 
-const child = cp.fork(path.resolve(__dirname, 'child.js'))
-child.send('hello from main')
-child.on('message', (msg) => {
-  console.log('main receive message', msg);
-})
-console.log('main pid: ', process.pid);
+// const child = cp.fork(path.resolve(__dirname, 'child.js'))
+// child.send('hello from main')
+// child.on('message', (msg) => {
+//   console.log('main receive message', msg);
+// })
+// console.log('main pid: ', process.pid);

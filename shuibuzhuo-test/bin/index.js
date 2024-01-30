@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('./process/index.js')
+require('./inquirer/index.js')
