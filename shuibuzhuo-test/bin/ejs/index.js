@@ -1,8 +1,9 @@
 const path = require("path");
 const ejs = require("ejs");
+const fs = require("fs");
 
 const html = "<div><%= user.name %></div>";
-const options = {};
+// const options = {};
 // const data = {
 //   user: {
 //     name: "hamo123",
@@ -48,8 +49,18 @@ const options = {};
 const data = {
   user: {
     name: "hamo",
-    nickname: '<div>哈默</div>'
+    nickname: "<div>哈默</div>",
+    copyright: "shuibuzhuo",
   },
+};
+const options = {
+  delimiter: "%",
+};
+
+ejs.fileLoader = function (filePath) {
+  console.log("filePath", filePath);
+  const content = fs.readFileSync(filePath).toString();
+  return '<div style="color: red">from <%= user.copyright %></div>' + content;
 };
 
 ejs.renderFile(
