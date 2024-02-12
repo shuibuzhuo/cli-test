@@ -2,7 +2,25 @@ const path = require("path");
 const ejs = require("ejs");
 const fs = require("fs");
 
-const html = "<div><%= user.name %></div>";
+// const html = "<div><%= user.name %></div>";
+
+const html = `
+<%_ if(data.selected === 1){ _%>
+<div class="one">111</div>
+<%_ } else { _%>
+<div class="two">222</div>
+<%_ } _%>
+`;
+
+const data3 = {
+  data: {
+    selected: 1,
+  },
+};
+
+const renderedTemplate = ejs.render(html, data3);
+console.log(renderedTemplate);
+
 // const options = {};
 // const data = {
 //   user: {
@@ -46,28 +64,28 @@ const html = "<div><%= user.name %></div>";
 //   }
 // );
 
-const data = {
-  user: {
-    name: "hamo",
-    nickname: "<div>哈默</div>",
-    copyright: "shuibuzhuo",
-  },
-};
-const options = {
-  delimiter: "%",
-};
+// const data = {
+//   user: {
+//     name: "hamo",
+//     nickname: "<div>哈默</div>",
+//     copyright: "shuibuzhuo",
+//   },
+// };
+// const options = {
+//   delimiter: "%",
+// };
 
-ejs.fileLoader = function (filePath) {
-  console.log("filePath", filePath);
-  const content = fs.readFileSync(filePath).toString();
-  return '<div style="color: red">from <%= user.copyright %></div>' + content;
-};
+// ejs.fileLoader = function (filePath) {
+//   console.log("filePath", filePath);
+//   const content = fs.readFileSync(filePath).toString();
+//   return '<div style="color: red">from <%= user.copyright %></div>' + content;
+// };
 
-ejs.renderFile(
-  path.resolve(__dirname, "template2.html"),
-  data,
-  options,
-  (err, file) => {
-    console.log(file);
-  }
-);
+// ejs.renderFile(
+//   path.resolve(__dirname, "template2.html"),
+//   data,
+//   options,
+//   (err, file) => {
+//     console.log(file);
+//   }
+// );

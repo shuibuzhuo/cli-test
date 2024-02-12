@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require("./ejs/glob");
+require("./ejs");
